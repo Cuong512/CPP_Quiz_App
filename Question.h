@@ -32,6 +32,9 @@ public:
         return toupper(ans) == correct;
     }
 
+    // --- MOI THEM: Ham lay noi dung text cua dap an ---
+    virtual string getAnswerText(char label) const { return ""; }
+
     // Ham thuan ao (pure virtual)
     virtual void print(int x, int y) const = 0;
     virtual void writeToFile(ofstream& file) const = 0;
@@ -44,35 +47,35 @@ public:
         : Question(id_, move(t_), corr, p_), options(o) {
     }
 
-    // --- HAM IN CAU HOI (DA FIX LOI HIEN THI DONG) ---
+    // --- HIEN THUC HAM LAY TEXT ---
+    string getAnswerText(char label) const override {
+        label = toupper(label);
+        if (label == 'S') return "BO QUA"; 
+        if (label == 0) return "CHUA CHON";
+        
+        int index = label - 'A';
+        if (index >= 0 && index < 4) {
+            return options[index];
+        }
+        return "";
+    }
+
+    // --- HAM IN CAU HOI (GIU NGUYEN FIX HIEN THI) ---
     void print(int x, int y) const override {
         setColor(BRIGHT_WHITE);
-
-        // Bien theo doi vi tri dong hien tai (Dynamic Y)
         int currentY = y;
 
         for (size_t i = 0; i < options.size(); ++i) {
             char label = 'A' + i;
-
-            // Dat con tro tai vi tri dong (duoc tinh toan lai sau moi lan in)
             gotoxy(x, currentY);
-
-            // In nhan A, B, C, D mau vang
             setColor(YELLOW); cout << label << ". ";
-
-            // In noi dung dap an mau trang
             setColor(WHITE);  cout << options[i];
 
-            // --- FIX LOI DE DONG ---
-            // Lay vi tri thuc te cua con tro sau khi in xong dap an nay
-            // (Vi dap an dai co the da tu xuong dong)
             CONSOLE_SCREEN_BUFFER_INFO csbi;
             if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
-                // Dap an tiep theo se bat dau o dong ke tiep cua vi tri hien tai
                 currentY = csbi.dwCursorPosition.Y + 1;
             }
             else {
-                // Truong hop du phong neu khong lay duoc API (rat hiem)
                 currentY++;
             }
         }
