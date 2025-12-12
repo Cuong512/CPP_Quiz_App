@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg?logo=windows)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-[📥 Tải Game Ngay (Windows)](https://github.com/cuong512/CPP_Quiz_App/releases/download/v1.0/TracNghiemPro.zip)
+[📥 Download (Windows)](https://github.com/cuong512/CPP_Quiz_App/releases/download/v1.0/TracNghiemPro.zip)
 
 [![Download](https://img.shields.io/badge/Download-Windows_v1.0-blue?style=for-the-badge&logo=windows)](https://github.com/cuong512/CPP_Quiz_App/releases/download/v1.0/TracNghiemPro.zip)
 
