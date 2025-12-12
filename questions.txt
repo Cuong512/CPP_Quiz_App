@@ -1,0 +1,700 @@
+Lớp nào dưới đây mô tả chính xác nhất khái niệm Encapsulation (Đóng gói) trong ngữ cảnh bảo mật dữ liệu?
+A. Gom nhóm dữ liệu và phương thức vào một đơn vị, nhưng cho phép truy cập tự do mọi thành phần.
+B. Che giấu dữ liệu private và chỉ cho phép truy xuất thông qua các phương thức public (getter/setter) để kiểm soát tính hợp lệ.
+C. Tách biệt hoàn toàn dữ liệu ra khỏi các phương thức xử lý để tối ưu hóa bộ nhớ.
+D. Mã hóa dữ liệu thành dạng nhị phân để không ai có thể đọc được.
+B
+---
+Trong C++, nếu không khai báo rõ phạm vi truy cập (access specifier) cho các thành viên trong một class, phạm vi mặc định sẽ là gì?
+A. public
+B. protected
+C. private
+D. friend
+C
+---
+Điều gì xảy ra khi một phương thức thành viên được khai báo là const (ví dụ: int getVal() const;)?
+A. Phương thức đó không thể trả về giá trị.
+B. Phương thức đó chỉ có thể được gọi bởi các đối tượng const.
+C. Phương thức đó không được phép thay đổi giá trị của bất kỳ thành viên dữ liệu (data member) nào của đối tượng gọi nó.
+D. Phương thức đó trả về một hằng số.
+C
+---
+Xét về thành phần tĩnh (static member) của lớp, phát biểu nào sau đây là SAI?
+A. Biến tĩnh được cấp phát bộ nhớ một lần duy nhất và dùng chung cho tất cả các đối tượng của lớp.
+B. Hàm thành viên tĩnh có thể truy xuất trực tiếp các thành viên dữ liệu không tĩnh (non-static).
+C. Hàm thành viên tĩnh có thể được gọi mà không cần tạo đối tượng của lớp.
+D. Biến tĩnh phải được khởi tạo bên ngoài khai báo lớp (trong phạm vi toàn cục).
+B
+---
+Con trỏ this trong C++ có đặc điểm gì?
+A. Là con trỏ trỏ đến lớp cha của đối tượng hiện tại.
+B. Là tham số ẩn đầu tiên của mọi hàm thành viên (kể cả hàm tĩnh).
+C. Không thể sử dụng con trỏ this trong các phương thức tĩnh (static methods).
+D. Có thể thay đổi địa chỉ mà con trỏ this trỏ tới.
+C
+---
+Hàm bạn (friend function) có đặc điểm nào sau đây?
+A. Là hàm thành viên của lớp nhưng có quyền truy cập public.
+B. Có quyền truy cập vào các thành viên private và protected của lớp mà nó là bạn.
+C. Được thừa kế bởi các lớp con của lớp khai báo nó.
+D. Có con trỏ this trỏ đến đối tượng của lớp khai báo nó.
+B
+---
+Quan hệ "Friend" (Bạn bè) trong C++ tuân theo nguyên tắc nào?
+A. Có tính đối xứng (A là bạn B thì B là bạn A).
+B. Có tính bắc cầu (A là bạn B, B là bạn C thì A là bạn C).
+C. Có tính kế thừa (Con của bạn cũng là bạn).
+D. Được cho chứ không được nhận (Declared, not claimed) và không có tính đối xứng hay bắc cầu.
+D
+---
+Copy Constructor (Hàm tạo sao chép) được gọi trong trường hợp nào sau đây?
+A. Khi truyền đối tượng vào hàm theo tham chiếu (pass by reference).
+B. Khi khởi tạo một đối tượng mới dựa trên một đối tượng cũ cùng lớp.
+C. Khi gán một đối tượng đã tồn tại cho một đối tượng khác đã tồn tại (toán tử =).
+D. Khi con trỏ đối tượng được cấp phát mới bằng new.
+B
+---
+Tại sao tham số của Copy Constructor thường được khai báo là const class_name &obj (tham chiếu hằng)?
+A. Để tránh việc gọi đệ quy vô hạn Copy Constructor và đảm bảo đối tượng nguồn không bị thay đổi.
+B. Để tăng tốc độ biên dịch chương trình.
+C. Để cho phép Copy Constructor thay đổi giá trị của đối tượng nguồn.
+D. Đây là quy định bắt buộc về cú pháp, nếu không dùng tham chiếu sẽ báo lỗi cú pháp dòng lệnh.
+A
+---
+Trong hàm hủy (Destructor), hành động nào là quan trọng nhất nếu lớp có thành viên là con trỏ được cấp phát động?
+A. Gán con trỏ bằng NULL.
+B. Giải phóng bộ nhớ bằng lệnh delete hoặc delete[].
+C. In ra thông báo đối tượng đã bị hủy.
+D. Gọi hàm hủy của lớp cha một cách tường minh.
+B
+---
+Phương thức nào sau đây cho phép đối tượng obj có thể thực hiện phép toán cout << obj;?
+A. ostream& operator<<(ostream& os); (là hàm thành viên).
+B. friend ostream& operator<<(ostream& os, const ClassName& obj); (là hàm bạn).
+C. void operator<<(const ClassName& obj); (là hàm thành viên).
+D. static void print(const ClassName& obj);.
+B
+---
+Khi quá tải toán tử gán (operator=), tại sao cần kiểm tra tự gán (self-assignment) như if (this == &rhs)?
+A. Để tối ưu hóa hiệu suất chương trình.
+B. Để tránh lỗi khi giải phóng vùng nhớ cũ của đối tượng hiện tại trước khi sao chép dữ liệu từ chính nó.
+C. Để tuân thủ chuẩn C++11.
+D. Để đảm bảo toán tử trả về tham chiếu *this.
+B
+---
+Sự khác biệt chính giữa struct và class trong C++ về quyền truy cập mặc định là gì?
+A. struct mặc định là private, class mặc định là public.
+B. struct mặc định là public, class mặc định là private.
+C. struct không thể chứa hàm thành viên, class thì có.
+D. struct không hỗ trợ kế thừa, class thì có.
+B
+---
+Trong kế thừa protected (class Derived : protected Base), các thành viên public của lớp Base sẽ trở thành gì trong lớp Derived?
+A. public
+B. protected
+C. private
+D. inaccessible (không truy cập được)
+B
+---
+Thứ tự gọi hàm tạo (Constructor) khi khởi tạo một đối tượng của lớp dẫn xuất (Derived class) là gì?
+A. Hàm tạo lớp dẫn xuất -> Hàm tạo lớp cơ sở.
+B. Hàm tạo lớp cơ sở -> Hàm tạo lớp dẫn xuất.
+C. Chỉ hàm tạo lớp dẫn xuất được gọi.
+D. Phụ thuộc vào danh sách khởi tạo (Initializer list).
+B
+---
+Ngược lại với hàm tạo, thứ tự gọi hàm hủy (Destructor) khi hủy đối tượng lớp dẫn xuất là gì?
+A. Hàm hủy lớp cơ sở -> Hàm hủy lớp dẫn xuất.
+B. Hàm hủy lớp dẫn xuất -> Hàm hủy lớp cơ sở.
+C. Cả hai được gọi đồng thời.
+D. Chỉ hàm hủy lớp cơ sở được gọi.
+B
+---
+Vấn đề "Diamond Problem" (Vấn đề hình thoi) trong đa kế thừa xảy ra khi nào?
+A. Khi một lớp kế thừa từ hai lớp không liên quan.
+B. Khi hai lớp dẫn xuất cùng kế thừa từ một lớp cơ sở, và một lớp khác lại kế thừa từ cả hai lớp dẫn xuất đó.
+C. Khi sử dụng quá nhiều hàm ảo.
+D. Khi lớp con định nghĩa lại phương thức của lớp cha.
+B
+---
+Giải pháp nào trong C++ dùng để giải quyết vấn đề "Diamond Problem" (xung đột bản sao của lớp cơ sở)?
+A. Sử dụng toán tử static_cast.
+B. Sử dụng kế thừa ảo (virtual inheritance).
+C. Định nghĩa lại tất cả các hàm trong lớp cuối cùng.
+D. Sử dụng từ khóa override.
+B
+---
+Đa hình (Polymorphism) trong C++ chủ yếu đạt được thông qua cơ chế nào?
+A. Nạp chồng hàm (Function Overloading) và Template.
+B. Hàm ảo (Virtual functions) và con trỏ/tham chiếu lớp cơ sở.
+C. Kế thừa private.
+D. Hàm bạn (Friend functions).
+B
+---
+Binding tĩnh (Static binding/Early binding) khác Binding động (Dynamic binding/Late binding) ở điểm nào?
+A. Binding tĩnh xảy ra khi chạy (runtime), Binding động xảy ra khi biên dịch (compile-time).
+B. Binding tĩnh xảy ra khi biên dịch, Binding động xảy ra khi chạy (nhờ cơ chế hàm ảo).
+C. Binding tĩnh dùng cho hàm ảo, Binding động dùng cho hàm thường.
+D. Không có sự khác biệt, chỉ là thuật ngữ khác nhau.
+B
+---
+Điều kiện để một lớp trở thành Lớp trừu tượng (Abstract Class) là gì?
+A. Lớp đó không có hàm tạo.
+B. Lớp đó có ít nhất một phương thức thuần ảo (pure virtual function).
+C. Lớp đó kế thừa từ một lớp trừu tượng khác.
+D. Lớp đó chỉ chứa các thành viên dữ liệu tĩnh.
+B
+---
+Cú pháp khai báo một phương thức thuần ảo (pure virtual function) là gì?
+A. virtual void func() = null;
+B. virtual void func() { }
+C. virtual void func() = 0;
+D. pure void func();
+C
+---
+Tại sao Destructor của lớp cơ sở (Base class) nên được khai báo là virtual khi sử dụng đa hình?
+A. Để tăng tốc độ hủy đối tượng.
+B. Để đảm bảo Destructor của lớp dẫn xuất được gọi khi hủy đối tượng thông qua con trỏ lớp cơ sở, tránh rò rỉ bộ nhớ.
+C. Để bắt buộc lớp con phải định nghĩa lại Destructor.
+D. Destructor không thể là virtual, đây là một câu hỏi sai.
+B
+---
+Trong khuôn mẫu hàm (Function Template), từ khóa typename có ý nghĩa tương đương với từ khóa nào trong ngữ cảnh khai báo tham số kiểu?
+A. struct
+B. class
+C. template
+D. object
+B
+---
+Lỗi "unresolved external symbol" thường gặp khi làm việc với Class Template là do nguyên nhân gì?
+A. Quên khai báo thư viện iostream.
+B. Định nghĩa các hàm thành viên của template trong file .cpp riêng biệt thay vì để chung trong file .h (hoặc không include file .cpp implementation).
+C. Sử dụng sai kiểu dữ liệu T.
+D. Không có hàm main.
+B
+---
+STL là viết tắt của gì?
+A. Standard Type Library
+B. Standard Template Library
+C. Simple Template Language
+D. Static Type List
+B
+---
+vector trong STL quản lý bộ nhớ như thế nào khi thêm phần tử vượt quá dung lượng hiện tại (capacity)?
+A. Báo lỗi tràn bộ nhớ.
+B. Tự động cấp phát một vùng nhớ mới lớn hơn (thường là gấp đôi), sao chép dữ liệu cũ sang và giải phóng vùng nhớ cũ.
+C. Ghi đè lên vùng nhớ của biến khác.
+D. Yêu cầu người dùng dùng lệnh realloc.
+B
+---
+Container nào trong STL lưu trữ dữ liệu dưới dạng cặp key-value và tự động sắp xếp theo key?
+A. vector
+B. list
+C. map
+D. stack
+C
+---
+Để sử dụng thuật toán sort() trong thư viện <algorithm> cho một vector chứa các đối tượng tự định nghĩa (User-defined objects), điều kiện cần là gì?
+A. Đối tượng phải có hàm in ra màn hình.
+B. Lớp của đối tượng phải quá tải toán tử < (operator<) hoặc cung cấp một hàm so sánh (comparator).
+C. vector phải được sắp xếp trước đó.
+D. Không thể sort đối tượng tự định nghĩa.
+B
+---
+Iterator là gì trong STL?
+A. Một loại con trỏ thông minh dùng để duyệt qua các phần tử của container.
+B. Một hàm dùng để xóa phần tử.
+C. Một biến đếm số lượng phần tử.
+D. Một container đặc biệt.
+A
+---
+Trong cấu trúc dữ liệu Stack (Cài đặt bằng mảng hoặc DSLK), thao tác Push thực hiện điều gì?
+A. Lấy phần tử ra khỏi Stack.
+B. Thêm phần tử vào đỉnh Stack.
+C. Kiểm tra Stack rỗng.
+D. Sắp xếp Stack.
+B
+---
+Nguyên lý LIFO (Last In First Out) áp dụng cho cấu trúc dữ liệu nào?
+A. Queue
+B. Stack
+C. Vector
+D. Map
+B
+---
+Nếu lớp Base có một phương thức void show() và lớp Derived cũng định nghĩa void show() (không có virtual). Khi gọi show() từ đối tượng Derived, hiện tượng này gọi là gì?
+A. Overloading (Nạp chồng)
+B. Overriding (Ghi đè - nếu có virtual) / Hiding (Che giấu - nếu không có virtual). (Đáp án ngữ cảnh này chọn B).
+C. Hiding (Che giấu)
+D. Casting (Ép kiểu)
+B
+---
+Sự khác biệt giữa vector và list trong STL là gì?
+A. vector là mảng động (truy cập ngẫu nhiên nhanh), list là danh sách liên kết (chèn/xóa nhanh).
+B. vector là danh sách liên kết, list là mảng động.
+C. vector chỉ chứa số nguyên, list chứa mọi kiểu.
+D. Không có sự khác biệt đáng kể.
+A
+---
+Để ngăn chặn một lớp bị kế thừa, trong C++11 ta dùng từ khóa gì?
+A. stop
+B. final
+C. sealed
+D. const
+B
+---
+Phương thức c_str() của lớp string trong C++ trả về cái gì?
+A. Một đối tượng string mới.
+B. Một con trỏ hằng (const char*) trỏ tới mảng ký tự kết thúc bằng null (C-style string).
+C. Độ dài của chuỗi.
+D. Ký tự đầu tiên của chuỗi.
+B
+---
+Trong hàm tạo của lớp con, cú pháp : BaseClass(args) được gọi là gì?
+A. Member Initialization List (Danh sách khởi tạo thành viên).
+B. Constructor Delegation.
+C. Base Initialization.
+D. Function Prototype.
+A
+---
+Nếu bạn có class A có thành viên là objB (đối tượng của class B). Khi tạo đối tượng A, thứ tự hàm tạo chạy như thế nào?
+A. Hàm tạo A chạy trước, sau đó đến hàm tạo B.
+B. Hàm tạo B (thành viên) chạy trước, sau đó đến hàm tạo A.
+C. Chạy đồng thời.
+D. Tùy thuộc vào trình biên dịch.
+B
+---
+Deep Copy (Sao chép sâu) khác Shallow Copy (Sao chép nông) ở điểm nào?
+A. Shallow copy sao chép giá trị con trỏ, Deep copy cấp phát vùng nhớ mới và sao chép dữ liệu mà con trỏ trỏ tới.
+B. Shallow copy chậm hơn Deep copy.
+C. Deep copy chỉ sao chép các biến tĩnh.
+D. Shallow copy sao chép toàn bộ đối tượng đệ quy.
+A
+---
+Từ khóa mutable dùng để làm gì?
+A. Cho phép biến thay đổi giá trị ngay cả khi đối tượng chứa nó là const.
+B. Ngăn cản biến bị thay đổi.
+C. Tạo ra biến tĩnh.
+D. Cho phép kế thừa đa cấp.
+A
+---
+Toán tử nào sau đây KHÔNG thể quá tải (overload)?
+A. +
+B. []
+C. :: (Scope resolution)
+D. ==
+C
+---
+Lệnh delete this; trong một hàm thành viên có hợp lệ không?
+A. Không bao giờ hợp lệ.
+B. Hợp lệ, nhưng phải đảm bảo đối tượng được cấp phát bằng new và không truy cập thành viên nào sau lệnh đó.
+C. Hợp lệ trong mọi trường hợp.
+D. Chỉ hợp lệ trong hàm tạo.
+B
+---
+Hàm at() của vector khác toán tử [] ở điểm nào?
+A. at() nhanh hơn [].
+B. at() có kiểm tra phạm vi (bounds checking) và ném ngoại lệ nếu chỉ số sai, còn [] thì không.
+C. at() trả về giá trị, [] trả về tham chiếu.
+D. Không có sự khác biệt.
+B
+---
+std::pair thường được sử dụng kết hợp với container nào nhất?
+A. vector
+B. map
+C. stack
+D. queue
+B
+---
+Trong mô hình MVC, Class đại diện cho ADT thường nằm ở tầng nào?
+A. View
+B. Controller
+C. Model
+D. Database
+C
+---
+Hàm virtual hoạt động dựa trên cơ chế nào bên dưới (under the hood)?
+A. Dựa vào tên hàm.
+B. Dựa vào V-Table (Virtual Table) và V-Ptr (Virtual Pointer).
+C. Dựa vào kích thước đối tượng.
+D. Dựa vào file header.
+B
+---
+Nếu một lớp không có Constructor nào được khai báo, trình biên dịch sẽ làm gì?
+A. Báo lỗi.
+B. Tự động sinh ra một Default Constructor (hàm tạo mặc định).
+C. Yêu cầu người dùng nhập dữ liệu.
+D. Coi như lớp đó là lớp trừu tượng.
+B
+---
+Nếu bạn khai báo một Constructor có tham số, trình biên dịch có tự sinh Default Constructor nữa không?
+A. Có.
+B. Không.
+C. Chỉ khi lớp đó kế thừa từ lớp khác.
+D. Tùy thuộc vào tham số.
+B
+---
+Phạm vi truy cập protected có ý nghĩa gì đối với các đối tượng của lớp đó (instances)?
+A. Đối tượng có thể truy cập thành viên protected tự do.
+B. Đối tượng không thể truy cập thành viên protected từ bên ngoài class (giống private).
+C. Chỉ đối tượng const mới truy cập được.
+D. Giống hệt public.
+B
+---
+Khi nạp chồng toán tử ++ (tăng), làm sao để phân biệt tiền tố (++a) và hậu tố (a++)?
+A. Không thể phân biệt.
+B. Toán tử hậu tố có thêm một tham số int giả (dummy parameter).
+C. Toán tử tiền tố trả về void.
+D. Dựa vào kiểu trả về.
+B
+---
+Câu lệnh friend class B; bên trong class A có ý nghĩa gì?
+A. Lớp A có thể truy cập thành viên private của B.
+B. Lớp B có thể truy cập thành viên private của A.
+C. Cả A và B đều truy cập được private của nhau.
+D. Lớp B kế thừa lớp A.
+B
+---
+Hàm static của một lớp có thể truy cập con trỏ this không?
+A. Có.
+B. Không.
+C. Chỉ khi hàm đó là public.
+D. Chỉ khi gọi từ một đối tượng.
+B
+---
+Một biến được khai báo static trong một hàm (function scope) có đặc điểm gì?
+A. Chỉ tồn tại trong lần gọi hàm đó.
+B. Giữ nguyên giá trị giữa các lần gọi hàm và chỉ được khởi tạo một lần.
+C. Là biến toàn cục có thể truy cập từ file khác.
+D. Được lưu trong Stack.
+B
+---
+Lớp fstream trong C++ dùng để làm gì?
+A. Xử lý chuỗi.
+B. Đọc và ghi file.
+C. Xử lý đồ họa.
+D. Quản lý bộ nhớ.
+B
+---
+Trong STL, thuật toán find trả về giá trị gì nếu không tìm thấy phần tử?
+A. NULL
+B. -1
+C. Iterator trỏ đến end() của container.
+D. Ném ra ngoại lệ.
+C
+---
+Đặc điểm của Abstract Data Type (ADT) là gì?
+A. Chỉ tập trung vào cài đặt chi tiết.
+B. Tách biệt phần giao diện (Interface/phép toán) khỏi phần cài đặt (Implementation/dữ liệu).
+C. Là một kiểu dữ liệu có sẵn trong C.
+D. Không cho phép tái sử dụng.
+B
+---
+Để định nghĩa một hàm template chấp nhận 2 kiểu dữ liệu khác nhau, cú pháp nào đúng?
+A. template <class T> void func(T a, T b)
+B. template <class T1, class T2> void func(T1 a, T2 b)
+C. template <T1, T2> void func(T1 a, T2 b)
+D. void func<T1, T2>(T1 a, T2 b)
+B
+---
+Cơ chế try-catch dùng để làm gì?
+A. Tăng tốc độ chương trình.
+B. Xử lý ngoại lệ (Exception Handling).
+C. Định nghĩa lớp mới.
+D. Thử nghiệm code chưa hoàn thiện.
+B
+---
+Nếu Class D kế thừa Class B theo kiểu private, thì con trỏ B* p = new D; có hợp lệ bên ngoài lớp D không?
+A. Có.
+B. Không (lỗi "conversion exists, but is inaccessible").
+C. Có, nhưng p chỉ trỏ đến null.
+D. Chỉ hợp lệ nếu B có hàm ảo.
+B
+---
+Hàm vector::push_back() có độ phức tạp thời gian trung bình (amortized time complexity) là bao nhiêu?
+A. O(n)
+B. O(1)
+C. O(log n)
+D. O(n log n)
+B
+---
+Khi nào cần định nghĩa lại Copy Constructor, Destructor và Assignment Operator (Quy tắc bộ 3 - Rule of Three)?
+A. Khi lớp có thành viên dữ liệu là số nguyên.
+B. Khi lớp quản lý tài nguyên động (như con trỏ cấp phát new/delete).
+C. Khi lớp có hàm ảo.
+D. Khi lớp được kế thừa.
+B
+---
+Trong C++, new khác malloc ở điểm nào quan trọng nhất đối với OOP?
+A. new trả về void*, malloc trả về con trỏ đúng kiểu.
+B. new gọi Constructor, malloc thì không.
+C. new cấp phát trên Stack, malloc trên Heap.
+D. new không thể thất bại.
+B
+---
+Lệnh #pragma once dùng để làm gì?
+A. Tối ưu hóa vòng lặp.
+B. Đảm bảo file header chỉ được include một lần trong quá trình biên dịch (tránh lỗi redefinition).
+C. Khai báo biến toàn cục.
+D. Bắt buộc biên dịch lại file.
+B
+---
+Nếu một hàm thành viên trả về tham chiếu *this (ví dụ trong toán tử gán =), mục đích chính là gì?
+A. Để tiết kiệm bộ nhớ.
+B. Để hỗ trợ chuỗi các phép gán (chaining assignments) ví dụ: a = b = c;.
+C. Để biến đối tượng thành con trỏ.
+D. Bắt buộc phải làm vậy theo chuẩn C++.
+B
+---
+Hàm friend có phá vỡ tính đóng gói (Encapsulation) không?
+A. Không, nó tăng cường tính đóng gói.
+B. Có, vì nó cho phép truy cập vào private data từ bên ngoài class.
+C. Không ảnh hưởng gì.
+D. Chỉ phá vỡ nếu là hàm ảo.
+B
+---
+Trong sơ đồ lớp (Class Diagram), quan hệ "Aggregation" (Toàn thể - Bộ phận lỏng lẻo) khác "Composition" (Toàn thể - Bộ phận chặt chẽ) như thế nào?
+A. Trong Composition, nếu đối tượng cha bị hủy, đối tượng con cũng bị hủy. Trong Aggregation, đối tượng con tồn tại độc lập.
+B. Trong Aggregation, cha hủy con cũng hủy.
+C. Composition là quan hệ IS-A, Aggregation là HAS-A.
+D. Không khác biệt.
+A
+---
+Phương thức capacity() của vector trả về gì?
+A. Số lượng phần tử hiện có.
+B. Số lượng phần tử tối đa có thể chứa trước khi cần cấp phát lại bộ nhớ.
+C. Kích thước của mỗi phần tử.
+D. Tổng dung lượng RAM của hệ thống.
+B
+---
+Khi kế thừa, nếu lớp cha không có Default Constructor, lớp con phải làm gì?
+A. Không cần làm gì cả.
+B. Phải gọi tường minh một Constructor khác của lớp cha trong danh sách khởi tạo (Initialization list).
+C. Tự động tạo Default Constructor cho lớp cha.
+D. Báo lỗi không thể kế thừa.
+B
+---
+"Object slicing" (Cắt lát đối tượng) xảy ra khi nào?
+A. Khi gán một đối tượng của lớp dẫn xuất cho một biến (không phải con trỏ/tham chiếu) của lớp cơ sở.
+B. Khi gán đối tượng cơ sở cho đối tượng dẫn xuất.
+C. Khi dùng con trỏ void.
+D. Khi cắt chuỗi string.
+A
+---
+Từ khóa override trong C++11 có tác dụng gì?
+A. Tạo một hàm mới.
+B. Giúp trình biên dịch kiểm tra xem hàm này có thực sự đang ghi đè một hàm ảo trong lớp cha hay không (tránh lỗi sai tên/tham số).
+C. Bắt buộc hàm phải là thuần ảo.
+D. Cho phép truy cập private.
+B
+---
+Trong Multiple Inheritance (Đa kế thừa), nếu 2 lớp cha có cùng 1 hàm void print(), lớp con gọi print() sẽ bị gì?
+A. Tự động gọi hàm của lớp cha thứ nhất.
+B. Lỗi biên dịch do mơ hồ (ambiguity).
+C. Gọi cả hai hàm.
+D. Chương trình chạy nhưng sai kết quả.
+B
+---
+Kiểu dữ liệu auto trong C++11 dùng để làm gì?
+A. Khai báo biến tự động hủy.
+B. Để trình biên dịch tự suy diễn kiểu dữ liệu của biến dựa trên giá trị khởi tạo.
+C. Khai báo biến toàn cục.
+D. Tạo mảng động.
+B
+---
+Lợi ích chính của việc sử dụng const reference (ví dụ: const MyClass& obj) làm tham số hàm là gì?
+A. Tránh sao chép đối tượng (hiệu suất) VÀ ngăn hàm thay đổi đối tượng (an toàn).
+B. Giúp hàm chạy nhanh hơn do không cần kiểm tra kiểu.
+C. Cho phép truyền giá trị NULL.
+D. Bắt buộc đối tượng phải là hằng số.
+A
+---
+Hàm reserve(n) trong vector dùng để làm gì?
+A. Thay đổi kích thước vector thành n phần tử.
+B. Đặt trước dung lượng bộ nhớ (capacity) cho n phần tử để tránh cấp phát lại nhiều lần, nhưng không thay đổi size.
+C. Đảo ngược vector.
+D. Xóa n phần tử đầu tiên.
+B
+---
+Trong C++, struct có thể kế thừa từ class không?
+A. Không.
+B. Có.
+C. Chỉ khi class không có hàm ảo.
+D. Chỉ khi struct không có dữ liệu.
+B
+---
+Sự khác biệt giữa class template và template class?
+A. Giống nhau.
+B. class template là khuôn mẫu để tạo ra các lớp, template class là một lớp cụ thể được tạo ra từ khuôn mẫu (instantiation).
+C. class template không tồn tại.
+D. template class là từ khóa cũ.
+B
+---
+Hàm inline gợi ý điều gì cho trình biên dịch?
+A. Hàm này nên được chạy ở chế độ ưu tiên.
+B. Thay thế lời gọi hàm bằng nội dung thân hàm trực tiếp tại nơi gọi để giảm chi phí gọi hàm (overhead).
+C. Hàm này không được đệ quy.
+D. Hàm này chỉ được dùng trong 1 dòng.
+B
+---
+Destructor có thể ném ngoại lệ (throw exception) không?
+A. Có, rất khuyến khích.
+B. Không nên (Bad practice), vì nếu destructor được gọi trong quá trình "stack unwinding" của một ngoại lệ khác, chương trình sẽ bị terminate ngay lập tức.
+C. Có, nhưng chỉ ngoại lệ số học.
+D. Không, trình biên dịch sẽ báo lỗi cấm.
+B
+---
+Trong quá tải toán tử ++ (tiền tố), kiểu trả về thường là gì?
+A. ClassType (giá trị).
+B. ClassType& (tham chiếu đến chính nó sau khi tăng).
+C. void.
+D. int.
+B
+---
+Trong mô hình quan hệ "is-a", đây là loại kế thừa nào?
+A. Public inheritance.
+B. Private inheritance.
+C. Composition.
+D. Friend class.
+A
+---
+Trong mô hình quan hệ "has-a" hoặc "is-implemented-in-terms-of", ta nên dùng?
+A. Public inheritance.
+B. Composition (Thành phần) hoặc Private Inheritance.
+C. Virtual inheritance.
+D. Abstract class.
+B
+---
+Thành phần nào sau đây KHÔNG thuộc về một đối tượng (instance) cụ thể mà thuộc về lớp?
+A. Các biến thành viên const.
+B. Các biến thành viên static.
+C. Con trỏ vptr.
+D. Các biến tham chiếu.
+B
+---
+Lệnh dynamic_cast dùng để làm gì?
+A. Ép kiểu số nguyên sang số thực.
+B. Chuyển đổi con trỏ/tham chiếu của lớp cơ sở sang lớp dẫn xuất một cách an toàn tại runtime (downcasting).
+C. Cấp phát bộ nhớ động.
+D. Ép kiểu hằng số thành biến thường.
+B
+---
+Nếu class A là bạn của class B, và class B là bạn của class C. Class A có quyền truy cập private của class C không?
+A. Có.
+B. Không (Quan hệ bạn bè không bắc cầu).
+C. Chỉ khi C khai báo public A.
+D. Có, nếu dùng protected.
+B
+---
+Constructor mặc định (Default Constructor) là gì?
+A. Constructor có tất cả tham số đều có giá trị mặc định HOẶC không có tham số nào.
+B. Constructor chỉ được sinh ra bởi trình biên dịch.
+C. Constructor có 1 tham số.
+D. Constructor dùng để copy.
+A
+---
+Điều gì xảy ra nếu bạn gọi một phương thức thuần ảo trong Constructor của lớp cơ sở?
+A. Chương trình chạy bình thường và gọi hàm của lớp con.
+B. Lỗi biên dịch hoặc lỗi Runtime (Undefined Behavior/Pure virtual function call) vì lúc này đối tượng con chưa được khởi tạo xong.
+C. Nó gọi hàm của lớp cha.
+D. Trình biên dịch tự động bỏ qua.
+B
+---
+std::map sử dụng cấu trúc dữ liệu nào bên dưới?
+A. Hash Table.
+B. Red-Black Tree (Cây đỏ đen - Cây nhị phân tìm kiếm cân bằng).
+C. Linked List.
+D. Dynamic Array.
+B
+---
+Sự khác biệt giữa map và multimap là gì?
+A. map cho phép key trùng lặp, multimap thì không.
+B. map không cho phép key trùng lặp (key là duy nhất), multimap cho phép nhiều phần tử có cùng key.
+C. multimap nhanh hơn map.
+D. map dùng cây, multimap dùng bảng băm.
+B
+---
+Để xóa một phần tử khỏi vector tại vị trí bất kỳ, ta dùng hàm nào?
+A. remove()
+B. delete()
+C. erase(iterator)
+D. pop()
+C
+---
+Hàm pop_back() của vector có trả về giá trị phần tử bị xóa không?
+A. Có.
+B. Không (kiểu trả về là void).
+C. Có, trả về tham chiếu.
+D. Tùy trình biên dịch.
+B
+---
+Biến con trỏ vptr (Virtual Pointer) được tạo ra khi nào?
+A. Khi lớp có ít nhất một hàm tĩnh.
+B. Khi lớp có ít nhất một hàm ảo.
+C. Luôn luôn được tạo ra.
+D. Khi sử dụng template.
+B
+---
+Khi một lớp kế thừa từ std::vector, điều gì là rủi ro lớn nhất?
+A. std::vector không có destructor ảo (virtual destructor), nên hủy đối tượng qua con trỏ lớp cha sẽ gây rò rỉ bộ nhớ hoặc hành vi không xác định.
+B. Không thể kế thừa từ template class.
+C. Hiệu suất bị giảm.
+D. Không truy cập được dữ liệu.
+A
+---
+Toán tử new thực hiện hai bước nào?
+A. Cấp phát bộ nhớ -> Gọi Constructor.
+B. Gọi Constructor -> Cấp phát bộ nhớ.
+C. Cấp phát bộ nhớ -> Gán giá trị NULL.
+D. Gọi Destructor -> Cấp phát bộ nhớ.
+A
+---
+Trong Overloading (Nạp chồng hàm), trình biên dịch phân biệt các hàm dựa trên tiêu chí nào?
+A. Kiểu trả về.
+B. Danh sách tham số (số lượng, kiểu dữ liệu, thứ tự).
+C. Tên tham số.
+D. Access modifier.
+B
+---
+Tại sao không nên ném ngoại lệ (throw exception) từ Constructor?
+A. Vì không thể bắt được ngoại lệ đó.
+B. Vì Destructor sẽ không được gọi cho đối tượng đó, dẫn đến rò rỉ tài nguyên nếu đã cấp phát một phần trong Constructor.
+C. Vì Constructor không có giá trị trả về.
+D. Đây là điều bình thường, không có vấn đề gì.
+B
+---
+Hàm swap() trong STL hoạt động hiệu quả với vector như thế nào?
+A. Sao chép từng phần tử.
+B. Chỉ hoán đổi các con trỏ quản lý bộ nhớ bên trong (constant time).
+C. Tạo vector thứ 3 trung gian.
+D. Không hỗ trợ swap vector.
+B
+---
+Điều gì xảy ra khi delete một con trỏ NULL?
+A. Lỗi Runtime (Crash).
+B. An toàn, không làm gì cả (No-op).
+C. Lỗi biên dịch.
+D. Hành vi không xác định (Undefined behavior).
+B
+---
+Từ khóa explicit trước Constructor dùng để làm gì?
+A. Cho phép chuyển đổi kiểu ngầm định.
+B. Ngăn chặn trình biên dịch thực hiện chuyển đổi kiểu ngầm định (implicit conversion) từ kiểu tham số sang kiểu của lớp.
+C. Khai báo Constructor rõ ràng hơn.
+D. Tăng tốc độ khởi tạo.
+B
+---
+Trong C++, struct và class có thể dùng thay thế nhau trong khai báo Template (template <class T> và template <struct T>) được không?
+A. Được.
+B. Không, chỉ class hoặc typename mới được dùng.
+C. Chỉ struct được dùng.
+D. Tùy trình biên dịch.
+B
+---
+Ai là GOAT?
+A. Cristiano Ronaldo
+B. Messi
+C. Antony
+D. Onana
+A
+---
