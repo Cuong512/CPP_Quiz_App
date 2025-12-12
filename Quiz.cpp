@@ -59,14 +59,14 @@ void showRanking() {
         });
 
     setColor(YELLOW); cout << "\n===== BANG XEP HANG =====\n"; setColor(WHITE);
-    cout << left << setw(5) << "Top" << setw(20) << "Ho ten" << setw(10) << "Lop"
-        << setw(8) << "Diem" << setw(10) << "Thoi gian" << "Ngay thi\n";
+    cout << left << setw(5) << "Top" << setw(40) << "Ho ten" << setw(20) << "Lop"
+        << setw(10) << "Diem" << setw(10) << "Thoi gian" << "Ngay thi\n";
     cout << string(80, '-') << "\n";
 
     for (size_t i = 0; i < list.size(); ++i) {
         if (i == 0) setColor(LIGHT_RED); else if (i == 1) setColor(YELLOW); else if (i == 2) setColor(GREEN);
         else setColor(WHITE);
-        cout << left << setw(5) << i + 1 << setw(20) << list[i].name << setw(10) << list[i].cls
+        cout << left << setw(5) << i + 1 << setw(35) << list[i].name << setw(20) << list[i].cls
             << setw(8) << fixed << setprecision(1) << list[i].score
             << setw(10) << fixed << setprecision(1) << list[i].duration << list[i].time << "\n";
     }
@@ -424,4 +424,5 @@ void Quiz::adminPanel() {
         case 4: clearLeaderboard(); break;
         }
     } while (c != 5);
+
 }
