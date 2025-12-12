@@ -8,7 +8,17 @@
 using namespace std;
 
 struct Candidate { string name; string className; string idNum; };
-struct ReviewData { int qId; string qText; char userAns; char correctAns; bool isCorrect; };
+
+// --- CAP NHAT STRUCT NAY ---
+struct ReviewData { 
+    int qId; 
+    string qText; 
+    char userAns; 
+    char correctAns; 
+    string userAnsText;     // Noi dung dap an nguoi dung chon
+    string correctAnsText;  // Noi dung dap an dung
+    bool isCorrect; 
+};
 
 class Quiz {
 private:
@@ -29,16 +39,16 @@ public:
     void randomizeAndSelect(int count);
 
     void start(int totalMinutes);
-    void takeTestLoop(); // Da sua lai hien thi
+    void takeTestLoop(); 
     void gradeAndShowResult();
-    void reviewMistakes();
+    void reviewMistakes(); // Ham nay se in ra text chi tiet
 
     // --- Admin Features ---
     void adminPanel();
     bool checkPassword();
     void viewQuestions();
     void deleteQuestion();
-    void addQuestion(); // Chuyen vao day
+    void addQuestion(); 
     void clearLeaderboard();
 };
 
