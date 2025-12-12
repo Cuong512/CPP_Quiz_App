@@ -10,29 +10,26 @@
 
 // --- Helper Functions ---
 
-// Ham tinh do dai hien thi thuc te cua chuoi UTF-8 (Tieng Viet)
-// Giup can chinh thang hang ke ca khi co dau
 int getVisibleLength(const string& s) {
     int len = 0;
     for (size_t i = 0; i < s.length(); ) {
         unsigned char c = s[i];
         int charLen = 1;
-        if ((c & 0x80) == 0) charLen = 1;       // ASCII (1 byte)
-        else if ((c & 0xE0) == 0xC0) charLen = 2; // 2 bytes
-        else if ((c & 0xF0) == 0xE0) charLen = 3; // 3 bytes
-        else if ((c & 0xF8) == 0xF0) charLen = 4; // 4 bytes
+        if ((c & 0x80) == 0) charLen = 1;       
+        else if ((c & 0xE0) == 0xC0) charLen = 2; 
+        else if ((c & 0xF0) == 0xE0) charLen = 3; 
+        else if ((c & 0xF8) == 0xF0) charLen = 4; 
 
         i += charLen;
-        len++; // Moi ky tu (du bao nhieu byte) chi tinh la 1 do rong hien thi
+        len++; 
     }
     return len;
 }
 
-// Ham in can giua trong mot cot co do rong co dinh
 void printCentered(string text, int width, bool isLast = false) {
     int visibleLen = getVisibleLength(text);
     if (visibleLen > width) {
-        text = text.substr(0, width - 3) + "..."; // Cat bot neu dai qua
+        text = text.substr(0, width - 3) + "..."; 
         visibleLen = width;
     }
 
@@ -41,10 +38,9 @@ void printCentered(string text, int width, bool isLast = false) {
     int rightPad = padding - leftPad;
 
     cout << string(leftPad, ' ') << text << string(rightPad, ' ');
-    if (!isLast) cout << " | "; // Them duong ke doc phan chia
+    if (!isLast) cout << " | "; 
 }
 
-// Luu ket qua vao file results.txt
 void saveResultToFile(const Candidate& cand, double score, double duration) {
     ofstream ghiFile("results.txt", ios::app);
     if (ghiFile) {
@@ -57,7 +53,6 @@ void saveResultToFile(const Candidate& cand, double score, double duration) {
     }
 }
 
-// Hien thi bang xep hang (DA FIX CAN GIUA & THANG HANG)
 void showRanking() {
     clearScreen();
     cout << setfill(' ');
@@ -84,7 +79,6 @@ void showRanking() {
     }
     fin.close();
 
-    // Sap xep
     sort(list.begin(), list.end(), [](const Entry& a, const Entry& b) {
         if (a.score != b.score) return a.score > b.score;
         return a.duration < b.duration;
@@ -93,29 +87,20 @@ void showRanking() {
     setColor(YELLOW); cout << "\n                                           ===== BANG XEP HANG =====\n"; setColor(WHITE);
     cout << endl;
 
-    // Dinh nghia do rong cac cot
-    int wTop = 5;
-    int wName = 30;
-    int wClass = 15;
-    int wScore = 8;
-    int wTime = 10;
-    int wDate = 20;
+    int wTop = 5, wName = 30, wClass = 15, wScore = 8, wTime = 10, wDate = 20;
 
-    // IN TIEU DE
     setColor(LIGHT_AQUA);
     printCentered("Top", wTop);
     printCentered("Ho ten", wName);
     printCentered("Lop", wClass);
     printCentered("Diem", wScore);
-    printCentered("Giay", wTime); // Doi ten cho ngan gon
+    printCentered("Giay", wTime); 
     printCentered("Ngay thi", wDate, true);
     cout << "\n";
 
-    // Ke duong ngang
     cout << string(wTop + wName + wClass + wScore + wTime + wDate + 15, '-') << "\n";
     setColor(WHITE);
 
-    // IN DU LIEU
     for (size_t i = 0; i < list.size(); ++i) {
         if (i == 0) setColor(LIGHT_RED); else if (i == 1) setColor(YELLOW); else if (i == 2) setColor(GREEN);
         else setColor(WHITE);
@@ -124,7 +109,6 @@ void showRanking() {
         printCentered(list[i].name, wName);
         printCentered(list[i].cls, wClass);
 
-        // Xu ly diem so: Neu tron (10.0) thi in 10, le (9.5) thi in 9.5
         stringstream ssScore;
         if (list[i].score == (int)list[i].score) ssScore << (int)list[i].score;
         else ssScore << fixed << setprecision(1) << list[i].score;
@@ -141,7 +125,6 @@ void showRanking() {
 
 // --- Quiz Class Implementation ---
 
-// Load cau hoi tu file questions.txt
 bool Quiz::loadFromFile(const string& filename) {
     ifstream fin(filename);
     if (!fin) return false;
@@ -158,7 +141,7 @@ bool Quiz::loadFromFile(const string& filename) {
         }
         string ans; getline(fin, ans);
         char corr = ans.empty() ? 'A' : toupper(ans[0]);
-        getline(fin, line); // Doc dong phan cach "---"
+        getline(fin, line); 
         questions.push_back(make_unique<MCQ>(id++, qtext, opts, corr, 1.0));
     }
     return !questions.empty();
@@ -263,10 +246,10 @@ void Quiz::takeTestLoop() {
                 else {
                     gotoxy(0, 18);
                     setColor(RED);
-                    cout << ">> PHIM KHONG HOP LE! (Chon A, B, C, D, S, F)";
+                    cout << ">> PHIM KHONG HOP LE!";
                     setColor(WHITE);
                     Sleep(500);
-                    gotoxy(0, 18); cout << "                                             ";
+                    gotoxy(0, 18); cout << "                     ";
                 }
             }
             Sleep(50);
@@ -283,7 +266,20 @@ void Quiz::gradeAndShowResult() {
         char uAns = (i < answers.size()) ? answers[i] : 0;
         bool isCorrect = questions[i]->isCorrect(uAns);
         if (isCorrect) correctCount++;
-        history.push_back({ questions[i]->getId(), questions[i]->getText(), uAns, questions[i]->getCorrect(), isCorrect });
+        
+        // --- LAY NOI DUNG TEXT DE LUU VAO HISTORY ---
+        string uText = questions[i]->getAnswerText(uAns);
+        string cText = questions[i]->getAnswerText(questions[i]->getCorrect());
+
+        history.push_back({ 
+            questions[i]->getId(), 
+            questions[i]->getText(), 
+            uAns, 
+            questions[i]->getCorrect(), 
+            uText, // Luu noi dung user chon
+            cText, // Luu noi dung dap an dung
+            isCorrect 
+        });
     }
 
     double finalScore = 0.0;
@@ -309,18 +305,36 @@ void Quiz::gradeAndShowResult() {
 
 void Quiz::reviewMistakes() {
     clearScreen();
-    setColor(LIGHT_RED); cout << "--- CAU SAI ---\n"; setColor(WHITE);
+    setColor(LIGHT_RED); cout << "--- XEM LAI CHI TIET ---\n"; setColor(WHITE);
+    
     bool hasWrong = false;
     for (auto& h : history) {
+        // Chi in cau sai
         if (!h.isCorrect) {
             hasWrong = true;
+            setColor(LIGHT_AQUA);
             cout << "Cau: " << h.qText << "\n";
-            cout << "   Ban chon: " << (h.userAns == 0 ? '_' : h.userAns)
-                << " -> Dap an dung: " << h.correctAns << "\n";
-            cout << string(40, '-') << "\n";
+            
+            // Hien thi dap an User chon kem noi dung text
+            setColor(RED);
+            cout << " [x] Ban chon: " << (h.userAns == 0 ? '_' : h.userAns) 
+                 << ". " << h.userAnsText << "\n";
+            
+            // Hien thi dap an Dung kem noi dung text
+            setColor(GREEN);
+            cout << " [v] Dap an dung: " << h.correctAns 
+                 << ". " << h.correctAnsText << "\n";
+                 
+            setColor(GRAY);
+            cout << string(60, '-') << "\n";
+            setColor(WHITE);
         }
     }
-    if (!hasWrong) cout << "Chuc mung! Ban dung tat ca cac cau.\n";
+    
+    if (!hasWrong) {
+        setColor(GREEN);
+        cout << "Chuc mung! Ban dung tat ca cac cau.\n";
+    }
     pauseConsole();
 }
 
