@@ -35,8 +35,6 @@ MyQuizProject/
 ├── questions.txt           # Ngân hàng câu hỏi
 ├── results.txt             # Kết quả và bảng xếp hạng
 ├── CMakeLists.txt          # Build CMake hỗ trợ mọi IDE
-└── tools/
-    └── Question_Maker.html # Công cụ tạo đề thi (giao diện Web)
 ```
 
 ---
