@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg?logo=windows)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-![Download]([https://img.shields.io/badge/Download_Game-Click_Here-success?style=for-the-badge&logo=windows](https://github.com/Cuong512/CPP_Quiz_App/releases/download/v1.0/TracNghiemPro.zip))
+[Download to use]((https://github.com/Cuong512/CPP_Quiz_App/releases/download/v1.0/TracNghiemPro.zip))
 
 **C++ Quiz Pro** là ứng dụng thi trắc nghiệm chạy trên nền tảng Console (CMD), được tối ưu hóa giao diện người dùng (UI/UX) với màu sắc, khung viền và điều hướng mượt mà. Dự án đi kèm với bộ công cụ Web giúp tạo đề thi tự động và hướng dẫn sử dụng AI để chuyển đổi dữ liệu.
 
